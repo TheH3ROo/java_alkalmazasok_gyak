@@ -42,6 +42,12 @@ public class HomeController {
         return "regisztral";
     }
 
+    @GetMapping("/error")
+    public String error(Model model) {
+        model.addAttribute("uzenet", model);
+        return "kapcsolathiba";
+    }
+
     @Autowired
     private UserRepository userRepo;
     @PostMapping("/regisztral_feldolgoz")
@@ -69,7 +75,7 @@ public class HomeController {
     @PostMapping("/kapcsolat_feldolgoz")
     public String Kapcsolat(@ModelAttribute Kapcsolat_uzenetek uzenet, Model model) {
         String bekuldo = SecurityContextHolder.getContext().getAuthentication().getName();
-        if(bekuldo.equals("anonymousUser"))
+        if (bekuldo.equals("anonymousUser"))
             uzenet.setBekuldo("Vendég");
         else
             uzenet.setBekuldo(bekuldo);
