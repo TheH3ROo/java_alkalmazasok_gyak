@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Bejelentkezés, regisztráció</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="menu"></div>
+<form action="#" th:action="@{/kapcsolat_feldolgoz}" th:object="${uzenet}" method="post">
+    <fieldset>
+        <legend>Üzenet küldés a kapcsolattartónak</legend>
+        <p><input type="text" th:field="*{cim}" placeholder="Cím" required/></p>
+        <p><input type="text" th:field="*{uzenet}" placeholder="Üzenet szövege" required/></p>
+        <p><input type="submit" value="Üzenet küldése" /></p>
+    </fieldset>
+</form>
+</body>
+</html>
