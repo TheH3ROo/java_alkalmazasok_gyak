@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Üzenetek</title>
+</head>
+    <body>
+        <div th:insert="menu"></div>
+        <table class="table table-striped table-advance table-hover">
+            <tbody>
+            <tr>
+                <th>Beküldő</th>
+                <th>Cím</th>
+                <th>Üzenet</th>
+                <th>Dátum</th>
+            </tr>
+            <tr th:each="uzenet: ${uzenetek}">
+                <td th:text="${uzenet.getBekuldo()}"></td>
+                <td th:text="${uzenet.getCim()}"></td>
+                <td th:text="${uzenet.getUzenet()}"></td>
+                <td th:text="${uzenet.getDatum()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

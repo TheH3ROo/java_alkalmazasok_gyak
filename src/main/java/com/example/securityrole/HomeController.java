@@ -1,6 +1,5 @@
 package com.example.securityrole;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -21,10 +20,6 @@ public class HomeController {
     @GetMapping("/home")
     public String user(Model model) {
         return "user";
-    }
-    @GetMapping("/lotto")
-    public String lotto() {
-        return "lotto";
     }
     @GetMapping("/kapcsolat")
     public String kapcsolat(Model model) {
@@ -81,5 +76,21 @@ public class HomeController {
             uzenet.setBekuldo(bekuldo);
         kapcsolatRepository.save(uzenet);
         return "kapcsolatjo";
+    }
+
+    @GetMapping("/uzenetek")
+    public String getAllUzenetek(Model model) {
+        List<Kapcsolat_uzenetek> uzenetek = (List<Kapcsolat_uzenetek>)kapcsolatRepository.findAll();
+        model.addAttribute("uzenetek", uzenetek);
+        return "uzenetek";
+    }
+
+    @Autowired
+    private NaploRepository naploRepository;
+    @GetMapping("/naplo")
+    public String getAllNaploBejegyzes(Model model) {
+        List<Naplo> naploBejegyzesek = naploRepository.findAllNaploBejegyzes();
+        model.addAttribute("naplobejegyzesek", naploBejegyzesek);
+        return "naplo";
     }
 }

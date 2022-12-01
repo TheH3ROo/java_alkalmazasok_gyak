@@ -1,6 +1,7 @@
 package com.example.securityrole;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name="uzenetek")
@@ -11,6 +12,7 @@ public class Kapcsolat_uzenetek {
         private String bekuldo;
         private String cim;
         private String uzenet;
+        private Date datum;
 
         public Integer getId() {
                 return id;
@@ -42,5 +44,13 @@ public class Kapcsolat_uzenetek {
 
         public void setUzenet(String uzenet) {
                 this.uzenet = uzenet;
+        }
+
+        public Date getDatum() {
+                return datum;
+        }
+
+        public void setDatum(Date datum) {
+                this.datum = datum;
         }
 }
